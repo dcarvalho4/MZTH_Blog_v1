@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+    <!--<textarea id="comment" style="width: 50%; padding: 10px; height: 50px; 
+        display: block; font-family:Sans-serif; font-size:1.2em;">
+        Type something in here, when you get close to the end the box will expand!
+    </textarea>-->
+    <div class="row">
+        <h1 style="text-align: center">Edit <%= blog.name %></h1>
+        <div style="width: 50%; margin: 25px auto;">
+            <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" name="name" id="name" value="<%= blog.name %>">
+                </div>
+                <div class="form-group">
+                    <label for="imageUpload">Image</label>
+                    <div style="width: 75%; margin: 25px auto;">
+                        <img class="img-responsive" src="<%= blog.image %>">
+                    </div>
+                    <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
+                </div>
+               <!-- <div class="form-group">
+                    <label for="description">Location</label>
+                    <input class="form-control" type="text" name="description" id="description" value="<%= blog.description %>">
+                </div> -->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                </div>
+                <div class="form-group">
+                    <textarea type="text" name="description" id="description" style="width: 100%;"><%= blog.description %></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Update!</button>
+                </div>
+            </form>
+            <a href="/blogs">Go Back</a>
+        </div>
+    </div>
+<% include ../partials/footer %>
+

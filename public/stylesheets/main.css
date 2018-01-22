@@ -1,0 +1,67 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+/* Thumbnail styles */
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+    /* width: 400px; */
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+/* Blog show page delete button */
+.delete-form {
+	display: inline-block;
+}
+
+/* Flexbox grid fix */
+.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.anc1 {
+  font-size: 18px;
+}
+
+.jumbotron {
+    margin-bottom: 25px;
+    background-image: url(MZTH_Blog_Jumbotron.jpeg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: darkblue;
+    text-shadow: white 0.3em 0.3em 0.3em;
+}
+
+.jumbotron .jumbotronBtn {
+  text-shadow: black 0.3em 0.3em 0.3em;
+}
+
+

@@ -1,0 +1,57 @@
+<% include ../partials/header %>
+    <div>
+        <div class="thumbnail">
+            <div class="caption-full">
+                <h5 class="pull-right">
+                    <br>
+                    <em>Submitted by: <a href="/users/<%= blog.author.id %>"><%= blog.author.username %></a>, <%= moment(blog.createdAt).fromNow() %></em>
+                </h5>
+                <h2>
+                    <a>
+                        <%=blog.name%>
+                    </a>
+                </h2>
+            </div>
+            <img class="img-responsive" src="<%= blog.image %>">
+            <div class="caption-full">
+                <p>
+                    <%= blog.description %>
+                </p>
+                <% if(currentUser && blog.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                    <a class="btn btn-warning" href="/blogs/<%= blog._id %>/edit">Edit</a>
+                    <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" class="delete-form">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                    <% }%>
+            </div>
+        </div>
+        <div class="well">
+            <div class="text-right">
+                <a class="btn btn-success" href="/blogs/<%= blog._id %>/comments/new">Add New Comment</a>
+            </div>
+            <hr>
+            <% blog.comments.forEach(function(comment){ %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><%= comment.author.username %></strong>
+                        <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+                        <div>
+                            <%= comment.text %>
+
+                                <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                                    <div class="pull-right">
+                                        <a href="/blogs/<%=blog._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">EDIT</a>
+                                        <form class="delete-form" action="/blogs/<%=blog._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                            <button class="btn btn-xs btn-danger">DELETE</button>
+                                        </form>
+                                    </div>
+                                    <% } %>
+                                    <hr>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+    </div>
+<% include ../partials/footer %>

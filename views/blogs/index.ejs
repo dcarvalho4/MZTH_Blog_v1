@@ -1,0 +1,53 @@
+<% include ../partials/header %>
+
+    <header class="jumbotron">
+        <div class="container">
+             <h1><span class="glyphicon glyphicon-king"></span> Welcome To Magic: Zero to Hero Blog!</h1>
+            <!-- <p>View our hand-picked blogs from all over the world</p> -->
+            <p>
+                <a class="btn btn-primary btn-lg jumbotronBtn" href="/blogs/new">Add New Blog</a>
+            </p>
+              <p>
+              <form action="/blogs" method="GET" class="form-inline" id="blog-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Blog search..." class="form-control">
+                </div>
+              </form>
+             </p>
+        </div>
+    </header>
+    <!--
+    <div setting="shareFloatCt">
+        <div class="share-widget-ct share-widget-desktop-float share-widget-mono banner-style-float-share">
+                <div class="share-widget-btn-ct"><div class="share-widget-btn share-widget-share-count">
+                    <div class="share-widget-share-count-inner" setting="shareCountCt">
+                        <div class="font-pnsb">57</div>
+                        <div style="font-size:14px;">Shares</div>
+                    </div>
+                </div>
+                <div title="Share to Facebook" setting="click:shareToFb" class="share-widget-btn clickable share-widget-fb-btn"></div>
+                <div title="Share to Twitter" setting="click:shareToTw" class="share-widget-btn clickable share-widget-tw-btn"></div>
+                <div title="Pin to Pinterest" setting="click:shareToPinterest" class="share-widget-btn share-widget-pin-btn clickable"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    -->
+    
+     <div class="row text-center flex-wrap" id="blog-grid">
+        <% blogs.forEach(function(blog){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= blog.image %>">
+                    <div class="caption">
+                        <h4><%= blog.name %></h4>
+                    </div>
+                    <p>
+                        <a href="/blogs/<%= blog._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+<% include ../partials/footer %>
